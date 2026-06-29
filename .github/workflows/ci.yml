@@ -18,6 +18,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
       - name: Run tests
-        run: pytest tests/ -q
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+        run: python -m pytest tests/ -v
       - name: Validate Docker build
         run: docker build -t readmission-api:ci .
