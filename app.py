@@ -18,6 +18,10 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 
 ARTIFACTS = Path(__file__).resolve().parent / "artifacts"
+
+# Create the artifacts directory if it doesn't exist
+ARTIFACTS.mkdir(parents=True, exist_ok=True)
+
 THRESHOLD = 0.5
 
 logging.basicConfig(
